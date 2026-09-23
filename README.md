@@ -10,15 +10,22 @@ Bu repository; sıfırdan derin öğrenme (Deep Learning) ve yapay sinir ağlar�
 
 ---
 
-## Müfredat Akış Şeması
+## Müfredat ve Derin Öğrenme Pipeline Akışı
 
 ```mermaid
-graph LR
-    A[01 ANN & İleri Besleme] --> B[02 Çok Sınıflı Softmax]
-    B --> C[03 Evrişimli Ağlar - CNN]
-    C -. Gelecek Modüller .-> D[04 Transfer Learning]
-    D -.-> E[05 Dizi Modelleri - LSTM]
-    E -.-> F[06 Model Dağıtımı & Çıkarım]
+graph TD
+    subgraph Temel Nöron ve İleri Besleme
+        A[01 İleri Beslemeli Yapay Sinir Ağları: ANN / MLP] --> B[02 Çok Sınıflı Sınıflandırma & Softmax]
+    end
+    subgraph Uzamsal ve Zamansal Mimariler
+        B --> C[03 Evrişimli Sinir Ağları: CNN & Filtreler]
+        B --> E[05 Dizi Modelleri & Zaman Serileri: LSTM / GRU]
+    end
+    subgraph İleri Düzey Öğrenme ve Prodüksiyon
+        C --> D[04 Transfer Learning & Fine-Tuning: MobileNetV2]
+        D --> F[06 Model Serileştirme & Canlı Çıkarım Pipeline]
+        E --> F
+    end
 ```
 
 ---
